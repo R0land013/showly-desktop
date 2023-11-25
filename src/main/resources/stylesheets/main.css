@@ -1,0 +1,30 @@
+
+
+.container {
+    -fx-background-color: white;
+}
+
+Label {
+    -fx-font-size: 16px;
+    -fx-font-family: "Ubuntu";
+}
+
+.guide-label {
+    -fx-font-weight: bold;
+}
+
+.main-action-button {
+    -fx-background-color: #008000;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-font-family: "Ubuntu";
+}
+
+.main-action-button:hover {
+    -fx-background-color: #029e02;
+}
+
+.presentation-name {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+}
