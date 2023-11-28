@@ -1,14 +1,9 @@
-package io.github.r0land013.showly.presenter;
+package io.github.r0land013.showly.desktop.presenter;
 
-import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import java.util.Stack;
 import java.lang.reflect.InvocationTargetException;
-import io.github.r0land013.showly.presenter.Intent;
 
 public class ApplicationManager {
 

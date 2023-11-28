@@ -1,4 +1,4 @@
-package io.github.r0land013.showly.presenter;
+package io.github.r0land013.showly.desktop.presenter;
 
 import java.util.Map;
 import java.util.HashMap;

@@ -1,6 +1,6 @@
-package io.github.r0land013.showly.presenter;
+package io.github.r0land013.showly.desktop.presenter;
 
-import io.github.r0land013.showly.view.AbstractView;
+import io.github.r0land013.showly.desktop.view.AbstractView;
 
 public abstract class AbstractPresenter {
 

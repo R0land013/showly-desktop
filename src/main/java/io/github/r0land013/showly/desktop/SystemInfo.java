@@ -1,4 +1,4 @@
-package io.github.r0land013.showly;
+package io.github.r0land013.showly.desktop;
 
 public class SystemInfo {
 

@@ -19,9 +19,23 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>21.0.1</version> <!-- Use the appropriate version -->
+            <version>21.0.1</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-swing</artifactId>
+            <version>21.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.r0land013</groupId>
+            <artifactId>showly</artifactId>
+            <version>0.2.0</version>
         </dependency>
     </dependencies>
+    
+    
     <build>
         <resources>
             <resource>
@@ -42,7 +56,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.3</version>
                 <configuration>
-                    <mainClass>io.github.r0land013.showly.App</mainClass>
+                    <mainClass>io.github.r0land013.showly.desktop.App</mainClass>
                 </configuration>
             </plugin>
             
