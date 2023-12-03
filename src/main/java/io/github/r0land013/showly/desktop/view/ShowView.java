@@ -7,7 +7,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -65,7 +68,7 @@ public class ShowView implements AbstractView {
         stopShowingButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                presenter.closePresenter();
+                presenter.stopShowing();
             }
         });
 
@@ -115,6 +118,25 @@ public class ShowView implements AbstractView {
             previousSlideButton.setDisable(true);
         } else {
             previousSlideButton.setDisable(false);
+        }
+    }
+
+    public boolean didUserConfirmStopShowing() {
+        
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Stop showing?");
+        alert.setHeaderText("Are you sure you want to stop showing?");
+
+        ButtonType stopButton = new ButtonType("Stop showing");
+        ButtonType notStopButton = new ButtonType("Keep showing");
+        alert.getButtonTypes().setAll(stopButton, notStopButton);
+
+        var result = alert.showAndWait();
+
+        if(result.isPresent() && result.get() == stopButton) {
+            return true;
+        } else {
+            return false;
         }
     }
 

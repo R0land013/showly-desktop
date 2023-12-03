@@ -16,6 +16,8 @@ public class ApplicationManager {
         presenterStack = new Stack<AbstractPresenter>();
         var initialPresenter = buildAbstractPresenter(initialPresenterClass, null);
         presenterStack.push(initialPresenter);
+
+        registerOnCloseStageEvent();
     }
     
     private AbstractPresenter buildAbstractPresenter(Class<? extends AbstractPresenter> presenterClass, Intent intent) {
@@ -27,6 +29,18 @@ public class ApplicationManager {
                 | NoSuchMethodException | SecurityException e) {
             e.printStackTrace();
             throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    private void registerOnCloseStageEvent() {
+        stage.setOnCloseRequest(event -> {
+            callOnClosingWindowOnAllPresenters();
+        });
+    }
+
+    private void callOnClosingWindowOnAllPresenters() {
+        for (var presenter : presenterStack) {
+            presenter.onClosingWindow();
         }
     }
 

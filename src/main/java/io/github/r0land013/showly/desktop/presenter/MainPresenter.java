@@ -1,10 +1,10 @@
 package io.github.r0land013.showly.desktop.presenter;
 
 import java.io.IOException;
-
 import io.github.r0land013.showly.Showly;
 import io.github.r0land013.showly.ShowlyConfig;
 import io.github.r0land013.showly.slides.exception.InvalidSlideFileException;
+import io.github.r0land013.showly.web.exception.PortBeingUsedException;
 import javafx.application.Platform;
 import io.github.r0land013.showly.desktop.view.AbstractView;
 import io.github.r0land013.showly.desktop.view.MainView;
@@ -28,11 +28,19 @@ public class MainPresenter extends AbstractPresenter{
     }
 
     public void openShowPresenter() {
+        var invalidInputErrorMessage = view.getErrorMessageIfUserInputIsInvalid();
+        if(invalidInputErrorMessage != null) {
+            view.showErrorMessage("Invalid field.", invalidInputErrorMessage);
+            return;
+        }
+
         runShowlyAndOpenShowPresenter();
     }
 
     private void runShowlyAndOpenShowPresenter() {
+        
         Platform.runLater(() -> {
+            
             var port = Integer.valueOf(view.getPort());
             var slidePathFile = view.getSelectedFilePath();
             var presentationName = view.getPresentationName();
@@ -50,8 +58,15 @@ public class MainPresenter extends AbstractPresenter{
                 intent.addData(SLIDE_LIST_KEY, slideList);
                 openNewPresenter(ShowPresenter.class, intent);
 
-            } catch (IOException | InvalidSlideFileException e) {
-                e.printStackTrace();
+            }
+            
+            catch (PortBeingUsedException e) {
+                view.showErrorMessage("Port in use",
+                "The port " + port + " is being used\nby other app. Select a different port.");
+            }
+            catch (IOException | InvalidSlideFileException e) {
+                view.showErrorMessage("Invalid slide file",
+                "You must select a slide file.\nFile format must be .pptx or.ppt .");
             }
         });
     }

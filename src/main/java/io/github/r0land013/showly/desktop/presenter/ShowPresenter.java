@@ -13,6 +13,7 @@ import io.github.r0land013.showly.desktop.model.FxSlide;
 import io.github.r0land013.showly.desktop.view.AbstractView;
 import io.github.r0land013.showly.desktop.view.ShowView;
 import io.github.r0land013.showly.slides.Slide;
+import javafx.application.Platform;
 
 
 public class ShowPresenter extends AbstractPresenter {
@@ -124,8 +125,16 @@ public class ShowPresenter extends AbstractPresenter {
         view.setSlidePosition(slideList.size(), currentSlideIndex + 1);
     }
 
-    public void closePresenter() {
+    public void stopShowing() {
+        if(view.didUserConfirmStopShowing()) {
+            showly.stop();
+            closeCurrentPresenter();
+        }
+    }
+
+    @Override
+    public void onClosingWindow() {
         showly.stop();
-        closeCurrentPresenter();
+        Platform.exit();
     }
 }

@@ -6,9 +6,12 @@ import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
@@ -22,6 +25,12 @@ public class MainView implements AbstractView {
     Scene scene;
     MainPresenter presenter;
     String selectedFilePath;
+
+    @FXML
+    private ImageView helpImage;
+
+    @FXML
+    private Label loadingLabel;
 
     @FXML
     private TextField portTextField;
@@ -100,5 +109,52 @@ public class MainView implements AbstractView {
 
     public String getPresentationName() {
         return presentationNameTextField.getText().trim();
+    }
+
+    public String getErrorMessageIfUserInputIsInvalid() {
+        
+        if(!isValidPort()){
+            return "Invalid port. It must be an integer number\nbetween 1024 and 65535.";
+        }
+
+        if(!isValidPresentationFile()) {
+            return "You must select a slide file.\nFile format must be .pptx or.ppt .";
+        }
+        
+        return null;
+    }
+
+    private boolean isValidPort() {
+        try{
+            var port = getPort();
+            var thePort = Integer.valueOf(port);
+            
+            if(thePort < 1024 || thePort > 65535) {
+                return false;
+            }
+
+            return true;
+        }
+        catch(NumberFormatException ex) {
+            return false;
+        }
+    }
+
+    private boolean isValidPresentationFile() {
+        if(selectedFilePath == null) {
+            return false;
+        }
+        return true;
+    }
+
+    public void showErrorMessage(String header, String text) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(header);
+        alert.setContentText(text);
+
+        alert.getButtonTypes().setAll(ButtonType.OK);
+
+        alert.showAndWait();
     }
 }

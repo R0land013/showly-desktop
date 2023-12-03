@@ -1,6 +1,7 @@
 package io.github.r0land013.showly.desktop.presenter;
 
 import io.github.r0land013.showly.desktop.view.AbstractView;
+import javafx.application.Platform;
 
 public abstract class AbstractPresenter {
 
@@ -34,6 +35,10 @@ public abstract class AbstractPresenter {
 
     public Intent getIntent() {
         return intent;
+    }
+
+    public void onClosingWindow() {
+        Platform.exit();
     }
 
 }

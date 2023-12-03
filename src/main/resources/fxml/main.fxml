@@ -37,6 +37,11 @@
                   <Image url="@../images/logo.png" />
                </image>
             </ImageView>
+            <Label fx:id="loadingLabel" styleClass="guide-label">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
             <GridPane alignment="CENTER" maxWidth="-Infinity" prefHeight="106.0" prefWidth="501.0" VBox.vgrow="NEVER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.79998779296875" minWidth="10.0" prefWidth="153.5999755859375" />
