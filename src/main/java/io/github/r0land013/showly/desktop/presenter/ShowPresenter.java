@@ -137,4 +137,14 @@ public class ShowPresenter extends AbstractPresenter {
         showly.stop();
         Platform.exit();
     }
+
+    @Override
+    public String getWindowTitle() {
+        var presentationName = config.getPresentationName();
+        if(presentationName == null || presentationName.isEmpty()) {
+            return "Showly - Showing...";
+        } else {
+            return "Showly - " + presentationName;
+        }
+    }
 }

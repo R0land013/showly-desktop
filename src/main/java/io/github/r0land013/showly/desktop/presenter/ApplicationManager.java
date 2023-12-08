@@ -1,6 +1,7 @@
 package io.github.r0land013.showly.desktop.presenter;
 
 import javafx.application.Platform;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.util.Stack;
 import java.lang.reflect.InvocationTargetException;
@@ -18,6 +19,7 @@ public class ApplicationManager {
         presenterStack.push(initialPresenter);
 
         registerOnCloseStageEvent();
+        setAppIcon();
     }
     
     private AbstractPresenter buildAbstractPresenter(Class<? extends AbstractPresenter> presenterClass, Intent intent) {
@@ -44,6 +46,11 @@ public class ApplicationManager {
         }
     }
 
+    private void setAppIcon() {
+        var image = new Image("images/icon.png");
+        stage.getIcons().add(image);
+    }
+
     public void openNewPresenter(Class<? extends AbstractPresenter> presenterClass, Intent intent) {
         
         var newPresenter = buildAbstractPresenter(presenterClass, intent);
@@ -51,6 +58,7 @@ public class ApplicationManager {
         
         var newScene = newPresenter.getView().getViewScene();
         stage.setScene(newScene);
+        stage.setTitle(newPresenter.getWindowTitle());
         
         newPresenter.onPresenterShown();
     }
@@ -64,6 +72,7 @@ public class ApplicationManager {
 
         var newScene = presenterStack.peek().getView().getViewScene();
         stage.setScene(newScene);
+        stage.setTitle(presenterStack.peek().getWindowTitle());
     }
 
     private boolean areNoMorePresenters() {
@@ -78,6 +87,7 @@ public class ApplicationManager {
         var initialPresenter = presenterStack.peek();
         stage.setScene(initialPresenter.getView().getViewScene());
         stage.show();
+        stage.setTitle(initialPresenter.getWindowTitle());
     }
 
 }

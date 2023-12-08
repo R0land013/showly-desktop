@@ -70,4 +70,13 @@ public class MainPresenter extends AbstractPresenter{
             }
         });
     }
+
+    public void openHelpPresenter() {
+        openNewPresenter(HelpPresenter.class);
+    }
+
+    @Override
+    public String getWindowTitle() {
+        return "Showly";
+    }
 }

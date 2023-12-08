@@ -55,13 +55,6 @@
          </children>
       </VBox>
    </center>
-   <bottom>
-      <Label text="Made with love by R0land013" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="10.0" top="10.0" />
-         </BorderPane.margin>
-      </Label>
-   </bottom>
    <top>
       <VBox alignment="CENTER" prefHeight="41.0" prefWidth="711.0" BorderPane.alignment="TOP_CENTER">
          <children>
@@ -81,4 +74,19 @@
          </children>
       </VBox>
    </top>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="36.0" prefWidth="711.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Made with love by" />
+            <Label styleClass="guide-label" text="R0land013" textFill="GREEN">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </bottom>
 </BorderPane>

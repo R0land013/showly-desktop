@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="546.0" styleClass="container" stylesheets="@../stylesheets/main.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox alignment="CENTER" prefHeight="67.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="backButton" mnemonicParsing="false" styleClass="main-action-button" text="Back" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Button>
+            <HBox alignment="CENTER" prefHeight="67.0" prefWidth="171.0" HBox.hgrow="ALWAYS" />
+            <Label styleClass="presentation-name" text="Help" />
+            <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="203.0" prefWidth="546.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label styleClass="guide-label" text="How to use Showly?">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox fillWidth="false" prefHeight="132.0" prefWidth="466.0" spacing="6.0">
+                     <children>
+                        <Label text="1. Join to a network and ask others to join to the same network" wrapText="true">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="2. Select a slide file, it has .ppt or pptx format" wrapText="true" />
+                        <Label text="3. Optionally select a port and a name for your show" wrapText="true" />
+                        <Label text="4. Click on 'Show!' button" wrapText="true" />
+                        <Label text="5. Ask others to open browsers on the shown urls " wrapText="true" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <VBox alignment="TOP_CENTER" prefHeight="190.0" prefWidth="546.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="71.0" fitWidth="183.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label styleClass="guide-label" text="Showly v1.0.0" />
+            <HBox alignment="CENTER" prefHeight="37.0" prefWidth="546.0">
+               <children>
+                  <Label text="Made with love by" />
+                  <Hyperlink fx:id="r0land013Hyperlink" text="R0land013" textFill="GREEN">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+            </HBox>
+            <Label text="Contribute to https://github.com/R0land013/showly-desktop">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+   </bottom>
+</BorderPane>

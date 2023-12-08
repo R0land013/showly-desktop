@@ -19,7 +19,10 @@ public abstract class AbstractPresenter {
 
     public abstract AbstractView getView();
 
-    public abstract void onPresenterShown();
+    public void onPresenterShown() {
+        // Here will be code that will be executed when
+        // the presenter is shown for first time.
+    }
 
     protected void openNewPresenter(Class<? extends AbstractPresenter> presenterClass) {
         appManager.openNewPresenter(presenterClass, null);
@@ -41,4 +44,7 @@ public abstract class AbstractPresenter {
         Platform.exit();
     }
 
+    public String getWindowTitle() {
+        return "Not window title - override getWindowTitle method";
+    }
 }
