@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.r0land013.showly</groupId>
     <artifactId>desktop</artifactId>
-    <version>0.0.0</version>
+    <version>1.0.0</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
@@ -13,6 +13,12 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
+            <version>21.0.1</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
             <version>21.0.1</version>
         </dependency>
         
@@ -57,6 +63,21 @@
                 <version>0.0.3</version>
                 <configuration>
                     <mainClass>io.github.r0land013.showly.desktop.App</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.gluonhq</groupId>
+                <artifactId>gluonfx-maven-plugin</artifactId>
+                <version>1.0.22</version>
+                <configuration>
+                    <mainClass>io.github.r0land013.showly.desktop.App</mainClass>
+                    <linkerArgs>
+                        <arg>${java.home}/lib/static/linux-amd64/glibc/libmlib_image.a</arg>
+                    </linkerArgs>
+                    <releaseConfiguration>
+                        <vendor>https://github.com/R0land013</vendor>
+                        <version>${project.version}</version>
+                    </releaseConfiguration>
                 </configuration>
             </plugin>
             
