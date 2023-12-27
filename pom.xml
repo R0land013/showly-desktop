@@ -69,16 +69,7 @@
                 <groupId>com.gluonhq</groupId>
                 <artifactId>gluonfx-maven-plugin</artifactId>
                 <version>1.0.22</version>
-                <configuration>
-                    <mainClass>io.github.r0land013.showly.desktop.App</mainClass>
-                    <linkerArgs>
-                        <arg>${java.home}/lib/static/linux-amd64/glibc/libmlib_image.a</arg>
-                    </linkerArgs>
-                    <releaseConfiguration>
-                        <vendor>https://github.com/R0land013</vendor>
-                        <version>${project.version}</version>
-                    </releaseConfiguration>
-                </configuration>
+                
             </plugin>
             
             <plugin>
@@ -87,4 +78,40 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>linux-build</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.gluonhq</groupId>
+                        <artifactId>gluonfx-maven-plugin</artifactId>
+                        <version>1.0.22</version>
+                        <configuration>
+                            <mainClass>io.github.r0land013.showly.desktop.App</mainClass>
+                            <linkerArgs>
+                                <arg>${java.home}/lib/static/linux-amd64/glibc/libmlib_image.a</arg>
+                            </linkerArgs>
+                        </configuration>        
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>windows-build</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.gluonhq</groupId>
+                        <artifactId>gluonfx-maven-plugin</artifactId>
+                        <version>1.0.22</version>
+                        <configuration>
+                            <mainClass>io.github.r0land013.showly.desktop.App</mainClass>
+                        </configuration>        
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
