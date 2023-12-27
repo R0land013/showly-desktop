@@ -1,0 +1,45 @@
+name: Build-Windows-Executable
+run-name: Building Windows Executable
+on: workflow_dispatch
+jobs:
+  Build-Windows-Executable:
+    runs-on: windows-latest
+    steps:
+      # Checkout your code
+      - uses: actions/checkout@v2
+
+      # Setup the Windows build environment
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.0.2
+
+      - name: Visual Studio shell
+        uses: egor-tensin/vs-shell@v1
+
+      # Make sure the latest GraalVM is installed.
+      # after this step env.JAVA_HOME and env.GRAALVM_HOME will point to the GraalVM location
+      - name: Setup GraalVM built by Gluon
+        uses: gluonhq/setup-graalvm@master
+        # set GITHUB_TOKEN to avoid exceeding GitHub's API rate limit
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Build your project using Maven
+      # The desktop profile is used, which means a native build will be created for the host platform (in this case Windows) itself.
+      - name: Gluon Build
+        run: mvn clean gluonfx:build
+      
+      # Get project version
+      - run: echo SHOWLY_DESKTOP_VERSION="$(mvn -q -Dexec.executable="echo" -Dexec.args='${project.version}' --non-recursive exec:exec)" >> $GITHUB_ENV
+
+      # Copy the native binary to the staging directory
+      - name: Copy native image to project root
+        run: mv target/gluonfx/x86_64-windows/desktop.exe ./showly-desktop-${SHOWLY_DESKTOP_VERSION}.exe
+
+      # Upload windows executable to releases
+      - uses: xresloader/upload-to-github-release@v1.4.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          file: "./showly-desktop-*"
+          tags: true
+          draft: true
