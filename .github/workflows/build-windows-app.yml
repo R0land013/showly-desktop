@@ -31,15 +31,22 @@ jobs:
       - name: Debug
         run: ls target\gluonfx\x86_64-windows
       
-      # Get project version
-      - run: echo SHOWLY_DESKTOP_VERSION="$(mvn -q -Dexec.executable="echo" -Dexec.args='${project.version}' --non-recursive exec:exec)" >> $GITHUB_ENV
+      - name: Extract Maven Project Version
+        id: extract_version
+        run: |
+          $version = [xml](Get-Content pom.xml).Project.Version
+          echo "Maven Project Version: $version"
+          echo "##[set-output name=version;]$version"
+        shell: pwsh
 
-      # Copy the native binary to the staging directory
+      - name: Set Maven Project Version as Environment Variable
+        run: echo "SHOWLY_DESKTOP_VERSION=${{ steps.extract_version.outputs.version }}" >> $GITHUB_ENV
+
       - name: Copy native image to project root
         run: mv target/gluonfx/x86_64-windows/desktop.exe ./showly-desktop-${SHOWLY_DESKTOP_VERSION}.exe
 
-      # Upload windows executable to releases
-      - uses: xresloader/upload-to-github-release@v1.4.2
+      - name: Upload windows executable to releases
+        uses: xresloader/upload-to-github-release@v1.4.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
