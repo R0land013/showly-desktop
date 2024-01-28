@@ -69,7 +69,9 @@
                 <groupId>com.gluonhq</groupId>
                 <artifactId>gluonfx-maven-plugin</artifactId>
                 <version>1.0.22</version>
-                
+                <configuration>
+                    <mainClass>io.github.r0land013.showly.desktop.App</mainClass>
+                </configuration>
             </plugin>
             
             <plugin>

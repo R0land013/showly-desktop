@@ -31,7 +31,11 @@
 },
 {
   "name":"com.sun.glass.ui.Cursor",
-  "fields":[{"name":"ptr"}]
+  "fields":[{"name":"ptr"}],
+  "methods":[
+    {"name":"getNativeCursor","parameterTypes":[] }, 
+    {"name":"getType","parameterTypes":[] }
+  ]
 },
 {
   "name":"com.sun.glass.ui.Pixels",
@@ -117,6 +121,105 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "name":"com.sun.javafx.font.directwrite.D2D1_COLOR_F",
+  "fields":[
+    {"name":"a"}, 
+    {"name":"b"}, 
+    {"name":"g"}, 
+    {"name":"r"}
+  ],
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.javafx.font.directwrite.D2D1_MATRIX_3X2_F",
+  "fields":[
+    {"name":"_11"}, 
+    {"name":"_12"}, 
+    {"name":"_21"}, 
+    {"name":"_22"}, 
+    {"name":"_31"}, 
+    {"name":"_32"}
+  ],
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.javafx.font.directwrite.D2D1_PIXEL_FORMAT",
+  "fields":[
+    {"name":"alphaMode"}, 
+    {"name":"format"}
+  ],
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.javafx.font.directwrite.D2D1_POINT_2F",
+  "fields":[
+    {"name":"x"}, 
+    {"name":"y"}
+  ],
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.javafx.font.directwrite.D2D1_RENDER_TARGET_PROPERTIES",
+  "fields":[
+    {"name":"dpiX"}, 
+    {"name":"dpiY"}, 
+    {"name":"minLevel"}, 
+    {"name":"pixelFormat"}, 
+    {"name":"type"}, 
+    {"name":"usage"}
+  ],
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.javafx.font.directwrite.DWRITE_GLYPH_METRICS",
+  "fields":[
+    {"name":"advanceHeight"}, 
+    {"name":"advanceWidth"}, 
+    {"name":"bottomSideBearing"}, 
+    {"name":"leftSideBearing"}, 
+    {"name":"rightSideBearing"}, 
+    {"name":"topSideBearing"}, 
+    {"name":"verticalOriginY"}
+  ],
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.javafx.font.directwrite.DWRITE_GLYPH_RUN",
+  "fields":[
+    {"name":"advanceOffset"}, 
+    {"name":"ascenderOffset"}, 
+    {"name":"bidiLevel"}, 
+    {"name":"fontEmSize"}, 
+    {"name":"fontFace"}, 
+    {"name":"glyphAdvances"}, 
+    {"name":"glyphIndices"}, 
+    {"name":"isSideways"}
+  ],
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.javafx.font.directwrite.DWRITE_MATRIX",
+  "fields":[
+    {"name":"dx"}, 
+    {"name":"dy"}, 
+    {"name":"m11"}, 
+    {"name":"m12"}, 
+    {"name":"m21"}, 
+    {"name":"m22"}
+  ],
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.javafx.font.directwrite.RECT",
+  "fields":[
+    {"name":"bottom"}, 
+    {"name":"left"}, 
+    {"name":"right"}, 
+    {"name":"top"}
+  ],
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"com.sun.javafx.font.freetype.FT_Bitmap",
   "fields":[
     {"name":"buffer"}, 
@@ -167,6 +270,23 @@
   ]
 },
 {
+  "name":"com.sun.prism.impl.PrismSettings",
+  "fields":[
+    {"name":"disableD3D9Ex"}, 
+    {"name":"forceGPU"}, 
+    {"name":"isVsyncEnabled"}, 
+    {"name":"verbose"}
+  ]
+},
+{
+  "name":"java.awt.AWTEvent",
+  "fields":[
+    {"name":"bdata"}, 
+    {"name":"consumed"}, 
+    {"name":"id"}
+  ]
+},
+{
   "name":"java.awt.AlphaComposite",
   "fields":[
     {"name":"extraAlpha"}, 
@@ -179,10 +299,72 @@
   "methods":[{"name":"getRGB","parameterTypes":[] }]
 },
 {
+  "name":"java.awt.Component",
+  "fields":[
+    {"name":"appContext"}, 
+    {"name":"background"}, 
+    {"name":"cursor"}, 
+    {"name":"enabled"}, 
+    {"name":"focusable"}, 
+    {"name":"foreground"}, 
+    {"name":"graphicsConfig"}, 
+    {"name":"height"}, 
+    {"name":"parent"}, 
+    {"name":"peer"}, 
+    {"name":"visible"}, 
+    {"name":"width"}, 
+    {"name":"x"}, 
+    {"name":"y"}
+  ],
+  "methods":[
+    {"name":"getFont_NoClientCode","parameterTypes":[] }, 
+    {"name":"getLocationOnScreen_NoTreeLock","parameterTypes":[] }, 
+    {"name":"getToolkitImpl","parameterTypes":[] }, 
+    {"name":"isEnabledImpl","parameterTypes":[] }
+  ]
+},
+{
+  "name":"java.awt.Dimension",
+  "fields":[
+    {"name":"height"}, 
+    {"name":"width"}
+  ]
+},
+{
+  "name":"java.awt.Font",
+  "fields":[
+    {"name":"name"}, 
+    {"name":"pData"}, 
+    {"name":"size"}, 
+    {"name":"style"}
+  ],
+  "methods":[
+    {"name":"getFont","parameterTypes":["java.lang.String"] }, 
+    {"name":"getFontPeer","parameterTypes":[] }
+  ]
+},
+{
   "name":"java.awt.GraphicsEnvironment",
   "methods":[
     {"name":"getLocalGraphicsEnvironment","parameterTypes":[] }, 
     {"name":"isHeadless","parameterTypes":[] }
+  ]
+},
+{
+  "name":"java.awt.Insets",
+  "fields":[
+    {"name":"bottom"}, 
+    {"name":"left"}, 
+    {"name":"right"}, 
+    {"name":"top"}
+  ],
+  "methods":[{"name":"<init>","parameterTypes":["int","int","int","int"] }]
+},
+{
+  "name":"java.awt.Toolkit",
+  "methods":[
+    {"name":"getDefaultToolkit","parameterTypes":[] }, 
+    {"name":"getFontMetrics","parameterTypes":["java.awt.Font"] }
   ]
 },
 {
@@ -191,6 +373,20 @@
 },
 {
   "name":"java.awt.color.ICC_ProfileRGB"
+},
+{
+  "name":"java.awt.desktop.UserSessionEvent$Reason",
+  "fields":[
+    {"name":"CONSOLE"}, 
+    {"name":"LOCK"}, 
+    {"name":"REMOTE"}, 
+    {"name":"UNSPECIFIED"}
+  ]
+},
+{
+  "name":"java.awt.event.InputEvent",
+  "fields":[{"name":"modifiers"}],
+  "methods":[{"name":"getButtonDownMasks","parameterTypes":[] }]
 },
 {
   "name":"java.awt.geom.AffineTransform",
@@ -275,6 +471,7 @@
   "fields":[
     {"name":"allgrayopaque"}, 
     {"name":"colorData"}, 
+    {"name":"lookupcache"}, 
     {"name":"map_size"}, 
     {"name":"rgb"}, 
     {"name":"transparent_index"}
@@ -320,6 +517,10 @@
   "methods":[{"name":"getBoolean","parameterTypes":["java.lang.String"] }]
 },
 {
+  "name":"java.lang.Class",
+  "methods":[{"name":"forName","parameterTypes":["java.lang.String","boolean","java.lang.ClassLoader"] }]
+},
+{
   "name":"java.lang.ClassLoader",
   "methods":[
     {"name":"getPlatformClassLoader","parameterTypes":[] }, 
@@ -338,6 +539,7 @@
   "name":"java.lang.String",
   "methods":[
     {"name":"<init>","parameterTypes":["byte[]"] }, 
+    {"name":"concat","parameterTypes":["java.lang.String"] }, 
     {"name":"toLowerCase","parameterTypes":["java.util.Locale"] }
   ]
 },
@@ -418,6 +620,13 @@
   "methods":[{"name":"getClassName","parameterTypes":["java.lang.Class"] }]
 },
 {
+  "name":"sun.awt.AWTAutoShutdown",
+  "methods":[
+    {"name":"notifyToolkitThreadBusy","parameterTypes":[] }, 
+    {"name":"notifyToolkitThreadFree","parameterTypes":[] }
+  ]
+},
+{
   "name":"sun.awt.SunHints",
   "fields":[{"name":"INTVAL_STROKE_PURE"}]
 },
@@ -428,8 +637,21 @@
     {"name":"awtLockNotify","parameterTypes":[] }, 
     {"name":"awtLockNotifyAll","parameterTypes":[] }, 
     {"name":"awtLockWait","parameterTypes":["long"] }, 
-    {"name":"awtUnlock","parameterTypes":[] }
+    {"name":"awtUnlock","parameterTypes":[] }, 
+    {"name":"isTouchKeyboardAutoShowEnabled","parameterTypes":[] }
   ]
+},
+{
+  "name":"sun.awt.Win32GraphicsConfig",
+  "fields":[{"name":"visual"}]
+},
+{
+  "name":"sun.awt.Win32GraphicsDevice",
+  "fields":[{"name":"dynamicColorModel"}]
+},
+{
+  "name":"sun.awt.Win32GraphicsEnvironment",
+  "methods":[{"name":"dwmCompositionChanged","parameterTypes":["boolean"] }]
 },
 {
   "name":"sun.awt.X11.XErrorHandlerUtil",
@@ -469,6 +691,51 @@
     {"name":"pixelStride"}, 
     {"name":"scanlineStride"}, 
     {"name":"type"}
+  ]
+},
+{
+  "name":"sun.awt.image.SunVolatileImage",
+  "fields":[{"name":"volSurfaceManager"}]
+},
+{
+  "name":"sun.awt.image.VolatileSurfaceManager",
+  "fields":[{"name":"sdCurrent"}]
+},
+{
+  "name":"sun.awt.windows.WComponentPeer",
+  "fields":[
+    {"name":"hwnd"}, 
+    {"name":"winGraphicsConfig"}
+  ],
+  "methods":[
+    {"name":"disposeLater","parameterTypes":[] }, 
+    {"name":"replaceSurfaceData","parameterTypes":[] }, 
+    {"name":"replaceSurfaceDataLater","parameterTypes":[] }
+  ]
+},
+{
+  "name":"sun.awt.windows.WDesktopPeer",
+  "methods":[
+    {"name":"systemSleepCallback","parameterTypes":["boolean"] }, 
+    {"name":"userSessionCallback","parameterTypes":["boolean","java.awt.desktop.UserSessionEvent$Reason"] }
+  ]
+},
+{
+  "name":"sun.awt.windows.WObjectPeer",
+  "fields":[
+    {"name":"createError"}, 
+    {"name":"destroyed"}, 
+    {"name":"pData"}, 
+    {"name":"target"}
+  ],
+  "methods":[{"name":"getPeerForTarget","parameterTypes":["java.lang.Object"] }]
+},
+{
+  "name":"sun.awt.windows.WToolkit",
+  "methods":[
+    {"name":"displayChanged","parameterTypes":[] }, 
+    {"name":"paletteChanged","parameterTypes":[] }, 
+    {"name":"windowsSettingChange","parameterTypes":[] }
   ]
 },
 {
@@ -774,6 +1041,15 @@
 {
   "name":"sun.java2d.pipe.ShapeSpanIterator",
   "fields":[{"name":"pData"}]
+},
+{
+  "name":"sun.java2d.windows.WindowsFlags",
+  "fields":[
+    {"name":"d3dEnabled"}, 
+    {"name":"d3dSet"}, 
+    {"name":"offscreenSharingEnabled"}, 
+    {"name":"setHighDPIAware"}
+  ]
 },
 {
   "name":"sun.java2d.xr.XRSurfaceData",
