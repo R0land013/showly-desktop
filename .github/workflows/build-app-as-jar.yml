@@ -1,0 +1,39 @@
+name: Build-App-Jar
+run-name: Building app Jar
+on:
+  push:
+    tags:
+      - v**
+
+jobs:
+    Build-App-Jar:
+        runs-on: ubuntu-latest
+        steps:
+            
+            - uses: actions/checkout@v3
+            
+            - name: Set up Maven
+              uses: stCarolas/setup-maven@v4.5
+              with:
+                maven-version: 3.8.8
+
+            - name: Install Java
+              uses: actions/setup-java@v4
+              with:
+                  distribution: 'adopt'
+                  java-version: '17'
+
+            
+            # Get project version
+            - run: echo SHOWLY_DESKTOP_VERSION="$(mvn -q -Dexec.executable="echo" -Dexec.args='${project.version}' --non-recursive exec:exec)" >> $GITHUB_ENV
+            
+            - run: mvn compile package
+            
+            # Upload linux executable to releases
+            - uses: xresloader/upload-to-github-release@v1.4.2
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                file: "target/shade/showly-desktop-*"
+                draft: false
+                tags: true
