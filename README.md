@@ -64,6 +64,20 @@ The requirements of this project are:
 
 If you wish to contribute with new features, ideas and bug fixes you can always open an issue.
 
+To run this project you have to execute the next command:
+
+```sh
+mvn javafx:run
+```
+
+To package this as a .jar file execute:
+
+```sh
+mvn compile package
+```
+
+The output .jar file will be in `./target/shade` directory.
+
 ## License
 
 This project is under [MIT LICENSE](/LICENSE).
